@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.anadolstudio.core.util.common.dpToPx
-import com.anadolstudio.core.util.common_extention.setMargins
 import com.anadolstudio.core.util.common_extention.setTextOrMakeGoneIfBlank
 import com.touchin.prosto.databinding.ViewOfferMainInfoBinding
 import com.touchin.prosto.feature.model.OfferUi
@@ -17,7 +16,7 @@ class OfferMainInfoView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     private companion object {
-        val MIN_HEIGHT = 100.dpToPx()
+        val MIN_HEIGHT = 0.dpToPx()
     }
 
     private val binding: ViewOfferMainInfoBinding
@@ -30,5 +29,10 @@ class OfferMainInfoView @JvmOverloads constructor(
     fun initView(offerUi: OfferUi, ) = with(binding) {
         title.setTextOrMakeGoneIfBlank(offerUi.reward)
         description.setTextOrMakeGoneIfBlank(offerUi.description)
+    }
+
+    fun setMaxLines(maxLines: Int) {
+        binding.title.maxLines = maxLines
+        binding.description.maxLines = maxLines
     }
 }
